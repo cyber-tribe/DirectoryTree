@@ -8,20 +8,16 @@ def getDir(path):
     dir = list()
     child = None
     for file in filelist:
-        # print(file)
         if file != '.' and file != '..':
             if os.path.isdir(file):
                 child = getDir(file)
                 if child != None:
                     # 子を持つディレクトリ
-                    print(1)
                     dir.append({"name":file.split('\\')[-1], "children":child})
                 else:
                     # 子を待たないディレクトリ
-                    print(2)
                     dir.append({"name":file.split('\\')[-1]})
             else:
-                print(3)
                 dir.append({"name":file.split('\\')[-1], "file":os.path.splitext(file)[1][1:]})
     return dir
 
